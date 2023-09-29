@@ -4,8 +4,9 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavBar from "./component/NavBar/NavBar";
 import Home from "./component/Home/Home";
-import Donation from "./component/Donation/Donation";
+import Donations from "./component/Donations/Donations";
 import Statistics from "./component/Statistics/Statistics";
+import DonationApply from "./component/DonationApply/DonationApply";
 
 const router = createBrowserRouter([
   {
@@ -14,16 +15,21 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("donations.json"),
+        loader: () => fetch("../public/donations.json"),
         element: <Home></Home>,
       },
       {
-        path: "/donation",
-        element: <Donation></Donation>,
+        path: "/donations",
+        element: <Donations></Donations>,
       },
       {
         path: "/statistics",
         element: <Statistics></Statistics>,
+      },
+      {
+        path: "/donation/:Id",
+        loader: () => fetch("../public/donations.json"),
+        element: <DonationApply></DonationApply>,
       },
     ],
   },
