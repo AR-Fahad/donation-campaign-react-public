@@ -1,10 +1,12 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { setData } from "../../js/localStorage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DonationApply = () => {
   const data = useLoaderData();
   const { Id } = useParams();
   const numId = parseInt(Id);
-  // #0B0B0B7F
   const findData = data.find((donation) => donation.id === numId);
   return (
     <div className="px-3 py-10">
@@ -13,6 +15,10 @@ const DonationApply = () => {
       </div>
       <div className="p-9 relative -top-[120px] bg-[#0B0B0B7F]">
         <button
+          onClick={() => {
+            toast("Donated successfully");
+            setData(findData.id);
+          }}
           style={{ backgroundColor: findData.text }}
           className="btn btn-md text-white border-none rounded"
         >
@@ -24,6 +30,7 @@ const DonationApply = () => {
         <br />
         <p>{findData.description}</p>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
