@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 import { getStoredData } from "../../js/localStorage";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Donations = () => {
   const allData = useLoaderData();
   const [dataApplied, setDataApplied] = useState([]);
   useEffect(() => {
     const getLocalData = getStoredData();
-
-    if (allData.length > 0) {
-      const appliedData = allData.filter((donation) =>
-        getLocalData.includes(donation.id)
-      );
-      setDataApplied(appliedData);
-    }
+    const appliedData = allData.filter((donation) =>
+      getLocalData.includes(donation.id)
+    );
+    setDataApplied(appliedData);
   }, [allData]);
   const [arrayLength, setArrayLength] = useState(4);
 
@@ -51,12 +48,14 @@ const Donations = () => {
                       >
                         {donation.price}
                       </p>
-                      <button
-                        style={{ backgroundColor: donation.text }}
-                        className="btn btn-sm text-white border-none mt-6"
-                      >
-                        View Details
-                      </button>
+                      <Link to={`/donation/${donation.id}`}>
+                        <button
+                          style={{ backgroundColor: donation.text }}
+                          className="btn btn-sm text-white border-none mt-6"
+                        >
+                          View Details
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </>
@@ -92,12 +91,14 @@ const Donations = () => {
                       >
                         {donation.price}
                       </p>
-                      <button
-                        style={{ backgroundColor: donation.text }}
-                        className="btn btn-sm text-white border-none mt-6"
-                      >
-                        View Details
-                      </button>
+                      <Link to={`/donation/${donation.id}`}>
+                        <button
+                          style={{ backgroundColor: donation.text }}
+                          className="btn btn-sm text-white border-none mt-6"
+                        >
+                          View Details
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </>

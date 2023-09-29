@@ -16,8 +16,8 @@ const DonationApply = () => {
       <div className="p-9 relative -top-[120px] bg-[#0B0B0B7F]">
         <button
           onClick={() => {
-            toast("Donated successfully");
             setData(findData.id);
+            toast("Donated successfully");
           }}
           style={{ backgroundColor: findData.text }}
           className="btn btn-md text-white border-none rounded"
