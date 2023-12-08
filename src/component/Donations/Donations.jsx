@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getStoredData } from "../../js/localStorage";
 import { Link, useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Donations = () => {
   const allData = useLoaderData();
@@ -16,6 +17,9 @@ const Donations = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Donation Campaign | Donation</title>
+      </Helmet>
       <div className="grid lg:grid-cols-2 gap-6 p-3">
         {dataApplied.length <= 4
           ? dataApplied.map((donation) => {

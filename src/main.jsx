@@ -7,6 +7,7 @@ import Home from "./component/Home/Home";
 import Donations from "./component/Donations/Donations";
 import Statistics from "./component/Statistics/Statistics";
 import DonationApply from "./component/DonationApply/DonationApply";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <HelmetProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );

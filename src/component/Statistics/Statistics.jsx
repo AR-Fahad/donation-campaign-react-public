@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { getStoredData } from "../../js/localStorage";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 const Statistics = () => {
@@ -16,6 +17,9 @@ const Statistics = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Donation Campaign | Statistics</title>
+      </Helmet>
       <div className="">
         <PieChart width={275} height={275}>
           <Pie
